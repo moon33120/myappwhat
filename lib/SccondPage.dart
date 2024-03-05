@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:myappwhat/Login/login.dart';
+import 'package:myappwhat/Osa.dart';
 import 'package:myappwhat/homepage.dart';
+import 'package:myappwhat/showroom.dart';
+
 class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -176,65 +180,126 @@ class SecondPage extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: ElevatedButton(
                   onPressed: () {
-                    // ตรวจสอบการทำงานต่อไปหลังจากกดปุ่ม
+                    // Navigate to the HomePage
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ThankPage()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor:
-                        Color.fromARGB(255, 6, 2, 209), // สีของตัวหนังสือบนปุ่ม
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10), // ระยะห่างของขอบปุ่ม
+                    backgroundColor: Color.fromARGB(255, 6, 2, 209),
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10), // รูปร่างของปุ่ม
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                   child: Text('Continue'),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-  backgroundColor: Color.fromARGB(255, 13, 87, 245), // Background color of the bar
-  selectedItemColor: Color.fromARGB(255, 109, 9, 240), // Color of the selected item
-  unselectedItemColor: Color.fromARGB(255, 76, 0, 255), // Color of the unselected items
-  items: [
-    BottomNavigationBarItem(
-      icon: Icon(Icons.home),
-      label: 'Home',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.search),
-      label: 'Search',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.notifications),
-      label: 'Notifications',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.account_circle),
-      label: 'Profile',
-    ),
-  ],
-  onTap: (int index) {
-    // Handle tap for each item
-    if (index == 0) {
-      // Navigate to the homepage
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage()),
-      );
-    } else if (index == 1) {
-      // Handle tap on Search item
-    } else if (index == 2) {
-      // Handle tap on Notifications item
-    } else if (index == 3) {
-      // Handle tap on Profile item
-    }
-  },
-),
+        backgroundColor:
+            Color.fromARGB(255, 13, 87, 245), // Background color of the bar
+        selectedItemColor:
+            Color.fromARGB(255, 109, 9, 240), // Color of the selected item
+        unselectedItemColor:
+            Color.fromARGB(255, 76, 0, 255), // Color of the unselected items
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'book',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications),
+            label: 'Notifications',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'Profile',
+          ),
+        ],
+        onTap: (int index) {
+          // Handle tap for each item
+          if (index == 0) {
+            // Navigate to the homepage
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Showroom()),
+            );
+          } else if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Patu()),
+            );
+            // Handle tap on Search item
+          } else if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
+            // Handle tap on Notifications item
+          } else if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => LoginPage()),
+            );
+            // Handle tap on Profile item
+          }
+        },
+      ),
+    );
+  }
+}
 
+class ThankPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Booking",
+          style: TextStyle(
+            fontFamily: 'Kanit',
+            color: const Color.fromARGB(255, 0, 0, 0),
+          ),
+        ),
+      ),
+      body: Container(
+        color: Color.fromARGB(255, 255, 255, 255),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Thank you !",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontFamily: 'Kanit',
+                  color: const Color.fromARGB(255, 0, 0, 0),
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Showroom()),
+                  );
+                },
+                child: Text('Continue'),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
